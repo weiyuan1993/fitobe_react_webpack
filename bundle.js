@@ -108,21 +108,31 @@
 			var url = window.location.href;
 			//var url="http://www.fitobe.com/blog/zh/article?id=390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8";
 			console.log(url);
-			var split_lang = url.split("/");
-			var article_lang = split_lang[4];
-			console.log(article_lang);
+			if (url.split("?") == -1) {
+				var split_lang = url.split("/");
+				var article_lang = split_lang[4];
+				console.log(article_lang);
 	
-			var split_id = url.split("?");
-			var id = split_id[1].split("=");
-			var article_id = id[1];
-			console.log(article_id);
+				var split_id = url.split("?");
+				var id = split_id[1].split("=");
+				var article_id = id[1];
+				console.log(article_id);
 	
-			var initial_article = {
-				'article_url': url,
-				'article_lang': article_lang,
-				'article_id': article_id
-			};
-			this.setState({ init_info: initial_article }); //設定當前文章狀態
+				var initial_article = {
+					'article_url': url,
+					'article_lang': article_lang,
+					'article_id': article_id
+				};
+				this.setState({ init_info: initial_article }); //設定當前文章狀態
+			} else {
+					//localhost測試用
+					var initial_article = {
+						'article_url': 'http://www.fitobe.com/blog/zh/article?id=390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8',
+						'article_lang': 'zh',
+						'article_id': '390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8'
+					};
+					this.setState({ init_info: initial_article });
+				}
 		},
 		loadArticleData: function loadArticleData() {
 			//載入初始文章
@@ -149,7 +159,7 @@
 		changeArticle: function changeArticle(jdata) {
 			window.document.body.scrollTop = 0;
 			this.setState({ article_data: jdata });
-			//window.location.href = 'http://104.196.56.186/blog/zh/article?id='+jdata.articleID;
+			//轉換URL
 			window.history.pushState(null, document.title = jdata.title, "?id=" + jdata.articleID);
 		},
 		render: function render() {
@@ -20363,7 +20373,7 @@
 								_react2.default.createElement(
 									'a',
 									{ href: 'https://www.facebook.com/FiToBe.Health/' },
-									_react2.default.createElement('img', { src: './img/facebook.png' })
+									_react2.default.createElement('img', { src: './img/facebook.svg' })
 								)
 							),
 							_react2.default.createElement(
@@ -20456,7 +20466,7 @@
 							_react2.default.createElement(
 								'a',
 								{ href: 'https://www.facebook.com/FiToBe.Health/' },
-								_react2.default.createElement('img', { src: './img/facebook.png' })
+								_react2.default.createElement('img', { src: './img/facebook.svg', height: '40' })
 							)
 						),
 						_react2.default.createElement('hr', null),
@@ -20466,7 +20476,7 @@
 							_react2.default.createElement(
 								'a',
 								{ href: 'http://itunes.apple.com/app/fitobe-health-management/id1066643070?ls=1&mt=8' },
-								_react2.default.createElement('img', { src: './img/appstore.svg', width: '121.5', height: '36' })
+								_react2.default.createElement('img', { src: './img/appstore.svg', height: '40' })
 							)
 						),
 						_react2.default.createElement('hr', null)

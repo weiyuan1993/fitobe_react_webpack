@@ -13,7 +13,7 @@ export default class Nav extends React.Component{
 					<li><a href="http://www.fitobe.com/zh-Hant/contact.html">聯絡我們</a></li>
 					<ul>
 						<li>
-							<a href="https://www.facebook.com/FiToBe.Health/" ><img src="./img/facebook.png"/></a>
+							<a href="https://www.facebook.com/FiToBe.Health/" ><img src="./img/facebook.svg"/></a>
 						</li>
 						<li>
 							<a href="http://itunes.apple.com/app/fitobe-health-management/id1066643070?ls=1&mt=8">
@@ -44,12 +44,12 @@ class Dropdown extends React.Component{
 					<li><a href="http://www.fitobe.com/zh-Hant/contact.html">聯絡我們</a></li>
 					<hr/>
 					<li>
-						<a href="https://www.facebook.com/FiToBe.Health/"><img src="./img/facebook.png"/></a>
+						<a href="https://www.facebook.com/FiToBe.Health/"><img src="./img/facebook.svg" height="40"/></a>
 					</li>
 					<hr/>
 					<li>
 						<a href="http://itunes.apple.com/app/fitobe-health-management/id1066643070?ls=1&mt=8">
-							<img src="./img/appstore.svg" width="121.5" height="36"/></a>
+							<img src="./img/appstore.svg" height="40"/></a>
 					</li>
 					<hr/>
 				</ul>

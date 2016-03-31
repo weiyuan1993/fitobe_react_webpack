@@ -18,7 +18,7 @@ p{
 }
 .nav {
 	width:auto;
-	height:75px;
+	height:60px;
 	background-color: white;
 	padding:0 ;
 
@@ -33,12 +33,11 @@ p{
 .nav> a> img{
 	width: 180px;
 	padding-left:15px;
-	position:relative;
-	top:9px;
+
 }
 .nav > ul,.nav>ul>ul{
 	float:right;
-	line-height: 75px;
+	line-height: 60px;
 	margin:0;
 }
 .nav > ul,li{
@@ -56,6 +55,9 @@ p{
 }
 .nav>ul>ul>li>a>img{
 	height:35px;
+}
+.nav>ul>ul>li>a>img:hover{
+	-webkit-filter:grayscale(100%);
 }
 .dropdown{
 	display:inline;
@@ -123,6 +125,7 @@ p{
 	padding-top:15px;
 }
 .heart{
+	display:none !important;
 	float:right;
 	display:inline;
 }
@@ -140,6 +143,7 @@ p{
 	font-size:16pt;
 	height:auto;
 }
+
 .sidebar{
 	background-color: white;
 	padding:0 15px 0 15px;
@@ -219,5 +223,9 @@ p{
 		font-size:18pt;
 		line-height: 40px;
 
+	}
+	.article.content img{
+		width:100%!important;
+		height:auto!important;
 	}
 }

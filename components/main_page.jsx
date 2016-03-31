@@ -69,7 +69,7 @@ var FullView = React.createClass({
     changeArticle:function(jdata){
     	window.document.body.scrollTop = 0;
     	this.setState({article_data:jdata});
-    	//window.location.href = 'http://104.196.56.186/blog/zh/article?id='+jdata.articleID;
+    	//轉換URL
     	window.history.pushState(null,document.title=jdata.title,"?id="+jdata.articleID);
     },
 	render:function(){
