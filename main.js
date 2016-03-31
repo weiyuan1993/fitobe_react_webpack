@@ -1,0 +1,1 @@
+import FullView from './components/main_page';
