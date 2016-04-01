@@ -5,6 +5,7 @@ import Article_View from './article_view';
 import Article_List from './article_list';
 import Fbfans from './fbfans';
 import Footer from './footer';
+
 //整體架構
 var FullView = React.createClass({
 	getInitialState:function(){
@@ -15,9 +16,10 @@ var FullView = React.createClass({
 	},
 	componentWillMount:function(){
 		var url=window.location.href;
-		//var url="http://www.fitobe.com/blog/zh/article?id=390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8";
-		console.log(url);
-		if(url.split("?")==-1){
+		//var url="http://www.fitobe.com/blog/en/article?id=390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8";
+		console.log(url.split("?"));
+		if(typeof url.split("?")!=='undefined'){
+			console.log(url);
 			var split_lang = url.split("/");
 			var article_lang = split_lang[4];
 			console.log(article_lang);
@@ -34,22 +36,13 @@ var FullView = React.createClass({
 		    	'article_id' : article_id
 		    };
 	    	this.setState({init_info:initial_article}); //設定當前文章狀態
-
-		}else{//localhost測試用
-			var initial_article =
-			{
-				'article_url' : 'http://www.fitobe.com/blog/zh/article?id=390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8',
-		    	'article_lang' : 'zh',
-		    	'article_id' : '390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8'
-		    };
-	    	this.setState({init_info:initial_article});
 		}
     },
     loadArticleData:function(){ //載入初始文章
 		$.ajax({
 			type:"GET",
 			headers:{'Application_key':'13524932','lang':this.state.init_info.article_lang},
-			url:"https://dev.fitobe.com/fitobe/api/article/share?article_id="+this.state.init_info.article_id,
+			url:"https://api.fitobe.com/fitobe/api/article/share?article_id="+this.state.init_info.article_id,
 			success:function(jdata){
 				console.log("Article api connect successfully",jdata);
 				document.title =jdata.article.title;

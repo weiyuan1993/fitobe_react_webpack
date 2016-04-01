@@ -1,5 +1,7 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 *{
-	font-style: Arial;
+	font-family: 'Raleway', sans-serif !important;
 }
 body{
 	background-color: #F2F2F2;
@@ -32,9 +34,10 @@ p{
 }
 .nav> a> img{
 	width: 180px;
-	padding-left:15px;
-
+	position:relative;
+	top:3px;
 }
+
 .nav > ul,.nav>ul>ul{
 	float:right;
 	line-height: 60px;
@@ -140,8 +143,10 @@ p{
 }
 .article.content{
 	color:#5D5D5D;
-	font-size:16pt;
 	height:auto;
+}
+.article.content span,.article.content p,.article.content ul{
+
 }
 
 .sidebar{
@@ -174,15 +179,16 @@ p{
 	background-color: #F2F2F2;
 	line-height:60px;
 	text-align: center;
+	padding-top:20px;
 }
 .hot-list:hover{
 	background-color:#F9B946;
 	transition:background-color .5s;
 }
 .hot-list>h2{
-	font-size: 13pt;
+	font-size: 12pt;
 	margin:0;
-	line-height: 60px;
+
 }
 .col-md-12.footer{
 	padding:0;
@@ -198,6 +204,9 @@ p{
 @media screen and (max-width: 980px) {
 	.fb-page-plugin{
 		display:none;
+	}
+	.nav>a>img{
+		top:10px;
 	}
 	.nav > ul{
 		display:none;

@@ -106,9 +106,10 @@
 		},
 		componentWillMount: function componentWillMount() {
 			var url = window.location.href;
-			//var url="http://www.fitobe.com/blog/zh/article?id=390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8";
-			console.log(url);
-			if (url.split("?") == -1) {
+			//var url="http://www.fitobe.com/blog/en/article?id=390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8";
+			console.log(url.split("?"));
+			if (typeof url.split("?") !== 'undefined') {
+				console.log(url);
 				var split_lang = url.split("/");
 				var article_lang = split_lang[4];
 				console.log(article_lang);
@@ -124,22 +125,14 @@
 					'article_id': article_id
 				};
 				this.setState({ init_info: initial_article }); //設定當前文章狀態
-			} else {
-					//localhost測試用
-					var initial_article = {
-						'article_url': 'http://www.fitobe.com/blog/zh/article?id=390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8',
-						'article_lang': 'zh',
-						'article_id': '390a7fe6-a42f-4fa8-8a7f-e6a42f6fa8e8'
-					};
-					this.setState({ init_info: initial_article });
-				}
+			}
 		},
 		loadArticleData: function loadArticleData() {
 			//載入初始文章
 			$.ajax({
 				type: "GET",
 				headers: { 'Application_key': '13524932', 'lang': this.state.init_info.article_lang },
-				url: "https://dev.fitobe.com/fitobe/api/article/share?article_id=" + this.state.init_info.article_id,
+				url: "https://api.fitobe.com/fitobe/api/article/share?article_id=" + this.state.init_info.article_id,
 				success: function (jdata) {
 					console.log("Article api connect successfully", jdata);
 					document.title = jdata.article.title;
@@ -20333,8 +20326,8 @@
 							null,
 							_react2.default.createElement(
 								'a',
-								{ href: 'http://www.fitobe.com/zh-Hant/' },
-								'首頁'
+								{ href: 'http://www.fitobe.com/en/' },
+								'Home'
 							)
 						),
 						_react2.default.createElement(
@@ -20342,8 +20335,8 @@
 							null,
 							_react2.default.createElement(
 								'a',
-								{ href: 'http://www.fitobe.com/zh-Hant/features.html' },
-								'特色'
+								{ href: 'http://www.fitobe.com/en/features.html' },
+								'Features'
 							)
 						),
 						_react2.default.createElement(
@@ -20351,8 +20344,8 @@
 							null,
 							_react2.default.createElement(
 								'a',
-								{ href: 'http://www.fitobe.com/zh-Hant/about.html' },
-								'關於我們'
+								{ href: 'http://www.fitobe.com/en/about.html' },
+								'About'
 							)
 						),
 						_react2.default.createElement(
@@ -20360,8 +20353,8 @@
 							null,
 							_react2.default.createElement(
 								'a',
-								{ href: 'http://www.fitobe.com/zh-Hant/contact.html' },
-								'聯絡我們'
+								{ href: 'http://www.fitobe.com/en/contact.html' },
+								'Contact'
 							)
 						),
 						_react2.default.createElement(
@@ -20425,8 +20418,8 @@
 							null,
 							_react2.default.createElement(
 								'a',
-								{ href: 'http://www.fitobe.com/zh-Hant/' },
-								'首頁'
+								{ href: 'http://www.fitobe.com/en/' },
+								'Home'
 							)
 						),
 						_react2.default.createElement('hr', null),
@@ -20435,8 +20428,8 @@
 							null,
 							_react2.default.createElement(
 								'a',
-								{ href: 'http://www.fitobe.com/zh-Hant/features.html' },
-								'特色'
+								{ href: 'http://www.fitobe.com/en/features.html' },
+								'Features'
 							)
 						),
 						_react2.default.createElement('hr', null),
@@ -20445,8 +20438,8 @@
 							null,
 							_react2.default.createElement(
 								'a',
-								{ href: 'http://www.fitobe.com/zh-Hant/about.html' },
-								'關於我們'
+								{ href: 'http://www.fitobe.com/en/about.html' },
+								'About'
 							)
 						),
 						_react2.default.createElement('hr', null),
@@ -20455,8 +20448,8 @@
 							null,
 							_react2.default.createElement(
 								'a',
-								{ href: 'http://www.fitobe.com/zh-Hant/contact.html' },
-								'聯絡我們'
+								{ href: 'http://www.fitobe.com/en/contact.html' },
+								'Contact'
 							)
 						),
 						_react2.default.createElement('hr', null),
@@ -20824,7 +20817,7 @@
 			$.ajax({
 				type: "GET",
 				headers: { 'Application_key': '13524932', 'lang': this.props.init_info.article_lang },
-				url: "https://dev.fitobe.com/fitobe/api/article/share/list",
+				url: "https://api.fitobe.com/fitobe/api/article/share/list",
 				success: function (data) {
 					console.log("Article list api connect successfully", data);
 					this.setState({ data: data.articleList.articles });
@@ -20846,10 +20839,10 @@
 					{ className: 'hot-list-div', key: data.title },
 					_react2.default.createElement(
 						'li',
-						{ className: 'hot-list', key: data.title },
+						{ className: 'hot-list', onClick: this.handleClick.bind(null, data), key: data.title },
 						_react2.default.createElement(
 							'h2',
-							{ key: data.title, onClick: this.handleClick.bind(null, data) },
+							{ key: data.title },
 							' ',
 							data.title,
 							' '
@@ -20867,7 +20860,7 @@
 					_react2.default.createElement(
 						'p',
 						null,
-						'熱門文章推薦'
+						'Popular Articles'
 					)
 				),
 				_react2.default.createElement(
